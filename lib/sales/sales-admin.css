@@ -1,0 +1,31 @@
+#sales_nonce {
+ display: none;
+}
+
+.option-heading {
+  font-size: 12px;
+  font-style: italic;
+  padding: 4px 0;
+}
+
+.size-checkbox {
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.size-thumb img {
+  width: 100%;
+  height: auto;
+}
+
+.acf-field[data-name="size"] {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.edit-product {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  text-decoration: none;
+}
