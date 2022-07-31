@@ -6,9 +6,12 @@
 
   <?php
 
-    cc_do_title_container();
 
-
+   if (is_front_page()) {
+   	echo do_shortcode('[elementor-template id="22731"]');
+   } else {
+   cc_do_title_container();
+   } 
 
     //extract( $fields );
     $sustainable = isset( $fields['sustainable'] ) ? $fields['sustainable'] : false ;

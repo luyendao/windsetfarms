@@ -14,6 +14,7 @@ body {
 @font-face {
   font-family: 'TheWildThingsScript';
   src: url('../fonts/TheWildThingsScript-Bold.otf'),
+  url('../fonts/TheWildThingsScript-Bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -41,9 +42,11 @@ body {
   font-family: 'TiemposText', serif;
 }
 
+/*
 .font-script, .font-script * {
   font-family: 'TheWildThingsScript', sans-serif;
 }
+*/
 .no-padding{
   padding: 0;
 }

@@ -13,6 +13,7 @@ function windset_scripts() {
   wp_enqueue_script( 'initial', get_template_directory_uri() . '/js/init.js', array('jquery'), '1.0.0', true );
   wp_enqueue_script( 'social', 'https://static.addtoany.com/menu/page.js', array('jquery'), '1.0.0', true );
   wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0', true );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'windset_scripts' );

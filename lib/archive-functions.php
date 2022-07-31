@@ -8,8 +8,8 @@ function custom_rewrite_basic() {
   add_rewrite_rule('^author/(.+?)/page/([0-9]+)/?', 'index.php?author_name=$matches[1]&page=$matches[2]', 'top');
   add_rewrite_rule('^category/(.+?)/page/([0-9]+)/?', 'index.php?category_name=$matches[1]&paged=$matches[2]', 'top');
   add_rewrite_rule('^category/(.+?)/paged/([0-9]+)/?', 'index.php?category_name=$matches[1]&paged=$matches[2]', 'top');
-  add_rewrite_rule('^windset-living/page/([0-9]+)/?', 'index.php?pagename=windset-living&page=$matches[1]', 'top');
-  add_rewrite_rule('^windset-living/paged/([0-9]+)/?', 'index.php?pagename=windset-living&page=$matches[1]', 'top');
+  //add_rewrite_rule('^windset-living/page/([0-9]+)/?', 'index.php?pagename=windset-living&page=$matches[1]', 'top');
+  //add_rewrite_rule('^windset-living/paged/([0-9]+)/?', 'index.php?pagename=windset-living&page=$matches[1]', 'top');
   add_rewrite_rule('^recipes/page/([0-9]+)/?', 'index.php?pagename=recipes&page=$matches[1]', 'top');
   add_rewrite_rule('^recipes/paged/([0-9]+)/?', 'index.php?pagename=recipes&page=$matches[1]', 'top');
 }
@@ -139,7 +139,7 @@ function get_posts_grid( $posts = null, $has_feeds = false, $current_page = 1 ) 
           <div class="col s12 m6 l4 grid-col">
             <div class="grid-post">
               <div style="position:relative;">
-                <?php echo do_shortcode('[fts_instagram instagram_id=17841400425829031 access_token=IGQVJVQ09xaXF3NUplVS1HVVFhOGJfd295ckdOZA29mOVpuaTFLODZAPMzNiSm9KanpPaU5rallfdklMVVpCaXN6dmh4ajlxMHBFT3VKaFg0WWJwS2x0RTdrQk9iSTJJOTlPSUpLQ1RB pics_count=1 type=basic super_gallery=yes columns=1 force_columns=no space_between_photos=1px icon_size=65px hide_date_likes_comments=no]'); ?>
+                <?php echo do_shortcode('[fts_instagram instagram_id=17841400425829031 access_token=IGQVJWOU9WX3Ntc0FrYWowNUpmS180aXozWUFXZAm95ZAmViQjRpcU5lSC0tOTM2ZAzRzVFc2M0JGSUdDMk9DdkNlV09oMklxb1ZADdWx3eW1acncxOFZAZAU1gzbzVGaDRHTENfOVJiamt3 pics_count=1 type=basic super_gallery=yes columns=3 force_columns=no space_between_photos=1px icon_size=65px hide_date_likes_comments=no]'); ?>
                 <div class="widget-feeder-header widget-feeder-header-absolute">
                   <img class="widget-feeder-icon" src="<?php echo get_template_directory_uri(); ?>/img/widget-feeder-header.jpg">
                   Windsetfarms » <a href="https://www.instagram.com/windsetfarms" class="btn-link-to-social-media btn-link-blue" target="_blank">Follow</a>
