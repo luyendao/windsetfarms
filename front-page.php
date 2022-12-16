@@ -8,7 +8,7 @@
 
 
    if (is_front_page()) {
-   	echo do_shortcode('[elementor-template id="22731"]');
+   	echo do_shortcode('[elementor-template id="23499"]');
    } else {
    cc_do_title_container();
    } 

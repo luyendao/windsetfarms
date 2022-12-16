@@ -38,7 +38,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57d4dc7ff6314"
                 },
                 {
                     "key": "field_57d4dcb5f6316",
@@ -57,7 +58,8 @@
                     "placeholder": "",
                     "maxlength": "",
                     "rows": 3,
-                    "new_lines": "wpautop"
+                    "new_lines": "wpautop",
+                    "parent_repeater": "field_57d4dc7ff6314"
                 },
                 {
                     "key": "field_57d4ff60a0f1e",
@@ -75,7 +77,8 @@
                     "center_lat": "",
                     "center_lng": "",
                     "zoom": "",
-                    "height": 200
+                    "height": 200,
+                    "parent_repeater": "field_57d4dc7ff6314"
                 },
                 {
                     "key": "field_57d4dcbcf6317",
@@ -94,7 +97,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57d4dc7ff6314"
                 },
                 {
                     "key": "field_57d4dcc5f6318",
@@ -113,7 +117,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57d4dc7ff6314"
                 },
                 {
                     "key": "field_57d4dccaf6319",
@@ -132,7 +137,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57d4dc7ff6314"
                 },
                 {
                     "key": "field_57d4dd79570cb",
@@ -151,9 +157,11 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57d4dc7ff6314"
                 }
-            ]
+            ],
+            "rows_per_page": 20
         },
         {
             "key": "field_57d4dcd9f631a",
@@ -169,8 +177,8 @@
                 "id": ""
             },
             "collapsed": "",
-            "min": "",
-            "max": "",
+            "min": 0,
+            "max": 0,
             "layout": "block",
             "button_label": "Add Row",
             "sub_fields": [
@@ -188,7 +196,8 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "parent_repeater": "field_57d4dcd9f631a"
                 },
                 {
                     "key": "field_57d4dd0bf631c",
@@ -204,7 +213,8 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "parent_repeater": "field_57d4dcd9f631a"
                 },
                 {
                     "key": "field_57d4dd11f631d",
@@ -220,7 +230,8 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "parent_repeater": "field_57d4dcd9f631a"
                 },
                 {
                     "key": "field_57d4dd15f631e",
@@ -236,7 +247,8 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "parent_repeater": "field_57d4dcd9f631a"
                 },
                 {
                     "key": "field_57d4dd1bf631f",
@@ -252,9 +264,30 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "parent_repeater": "field_57d4dcd9f631a"
                 }
-            ]
+            ],
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_63519c06d06ad",
+            "label": "Instagram Token",
+            "name": "instagram_token",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -272,8 +305,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "local": "php",
-    "modified": 1540443868
+    "show_in_rest": 0,
+    "modified": 1666292752
 }
