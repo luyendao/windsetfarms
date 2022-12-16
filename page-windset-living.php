@@ -52,6 +52,24 @@ cc_do_title_container( $title );
 
     $query_posts = isset( $query->posts ) ? $query->posts : false;
 
+
+    $intro_text = "Immerse yourself in Windset Living, where we discuss everything from the latest trends in agriculture, your favourite recipes, and our commitment to the communities we grow in! We invite you to read through our Windset Living posts or find us on social @windsetfarms. Follow along with Your Friends in Freshness<sup>®</sup>!";
+
+    $intro_copy = sprintf('<div class="col s12 m12 l12 intro-text" style="font-size: 24px; padding: 0 60px 0 60px; text-align:center;"><p style="line-height: 1.3em;font-weight: 300;">%s</p></div>', $intro_text);
+
+
+    $embed_social_combined_feed = '<div class="embedsocial-hashtag" data-ref="de0987c773b46253398a3479f34ff4002b348f65"></div> <script> (function(d, s, id) { var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js); }(document, "script", "EmbedSocialHashtagScript")); </script>';
+
+    echo $intro_copy;
+
+    // Echo embed social widget on first page only
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;	
+    
+    if ( 1== $paged) {
+	echo $embed_social_combined_feed;
+    }
+
+
     get_posts_grid( $query_posts, true, $current_page );
 
 
@@ -60,6 +78,8 @@ cc_do_title_container( $title );
      * Because of the two extra social feeder( tweeter and instagram ), the last grid is empty. Fill it out by grabbing one more post from database.
      *
      */
+
+/*
     if( $current_page <= 1 ){
 
         $additional_args = array(
@@ -75,9 +95,10 @@ cc_do_title_container( $title );
 
         get_posts_grid( $additional_query_posts );
     }
-
+ */
     ?>
-</div>
+
+	    </div>
 
 <div class="section section-pagination center">
 
