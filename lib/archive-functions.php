@@ -98,7 +98,10 @@ function get_posts_grid( $posts = null, $has_feeds = false, $current_page = 1 ) 
         $use_thumb = false;
       }
 
-      if( $has_feeds && $current_page <= 1 ) {
+      $legacy_feed_on = false;
+
+
+      if( $legacy_feed_on && $has_feeds && $current_page <= 1 ) {
         /**
          *
          *
