@@ -33,21 +33,49 @@
     <?php if ( $product_sizes ) { ?>
     <div id="available-sizes" class="section product-sizes <?php echo $do_not_translate; ?>">
         <div class="row">
-          <div class="col s12 m12 l12 center">
 
-            <h2 class="tiny">Available Sizes</h2>
+        <?php 
+        
+        $product_count = count($product_sizes);
 
-            <?php foreach ( $product_sizes as $size ) {
-              $weight = isset( $size['weight'] ) ? $size['weight'] : false;
-              $size_img = isset( $size['img']['sizes']['large'] ) ? $size['img']['sizes']['large'] : false;
-              ?>
-              <div class="size">
-                <img class="responsive-img" src="<?php echo $size_img; ?>" />
-                <div><?php echo $weight; ?></div>
-              </div>
-            <?php } ?>
+            if ($product_count == 1 && get_field('product_asset')) {
+              $product_header =  '<div class="col s12 m6 l6 py-6 product-size-count-1">';
+            }
+            elseif ($product_count > 1 && get_field('product_asset')) {
+            $product_header =  '<div class="col s12 m6 l6 center py-6 product-size-count-many">'; 
+            }
+            elseif (isset($product_sizes) && !get_field('product_asset')) {
+              $product_header =  '<div class="col s12 m12 l12 center py-6 product-size-count-many">'; 
+            }        
+
+        echo $product_header;
+
+        
+        ?>
+
+            <div class="product-size-wrapper">
+              <h2 class="tiny">Available Sizes</h2>
+
+              <?php foreach ( $product_sizes as $size ) {
+                $weight = isset( $size['weight'] ) ? $size['weight'] : false;
+                $size_img = isset( $size['img']['sizes']['large'] ) ? $size['img']['sizes']['large'] : false;
+                ?>
+                <div class="size">
+                  <img class="responsive-img" src="<?php echo $size_img; ?>" />
+                  <div class="weight"><?php echo $weight; ?></div>
+                </div>
+              <?php } ?>
+            </div>
 
           </div>
+
+
+            <div class="col s12 m6 l6 center py-6 video-embed">
+                <?php echo get_field('product_asset') ?>
+            </div>
+          
+
+
         </div>
         <hr/>
       </div>
