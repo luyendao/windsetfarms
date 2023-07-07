@@ -4435,3 +4435,32 @@ h4.career-title{
 }	
 	
 }
+
+
+
+/* Utility Classes */
+
+.py-6 {
+  padding-top: 2em !important;
+  padding-bottom:2em !important;
+}
+
+.video-embed iframe {
+  max-width: 100%;
+  width:100% !important;
+}
+
+.product-sizes .product-size-count-many .size {
+  width: 280px !important;
+  padding-bottom: 30px;
+}
+
+.product-sizes .product-size-count-1 .weight,
+.product-sizes .product-size-count-1 .tiny
+{
+  text-align:center;
+}
+
+.product-sizes .product-size-count-1 .product-size-wrapper {
+    text-align:center;
+}

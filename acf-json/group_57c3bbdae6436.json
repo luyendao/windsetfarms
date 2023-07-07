@@ -6,6 +6,7 @@
             "key": "field_57c3bd95d4c4d",
             "label": "Product Image",
             "name": "product_image",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -30,6 +31,7 @@
             "key": "field_57c3bbe381c73",
             "label": "Product Sizes",
             "name": "product_sizes",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -41,7 +43,7 @@
             },
             "collapsed": "",
             "min": 1,
-            "max": "",
+            "max": 0,
             "layout": "row",
             "button_label": "Add Row",
             "sub_fields": [
@@ -49,6 +51,7 @@
                     "key": "field_593398bdc2896",
                     "label": "Product Logo",
                     "name": "product_logo",
+                    "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -67,12 +70,14 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": ""
+                    "mime_types": "",
+                    "parent_repeater": "field_57c3bbe381c73"
                 },
                 {
                     "key": "field_57c3bc4981c75",
                     "label": "Product Image",
                     "name": "img",
+                    "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -91,12 +96,14 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": ""
+                    "mime_types": "",
+                    "parent_repeater": "field_57c3bbe381c73"
                 },
                 {
                     "key": "field_57c3bc3c81c74",
                     "label": "Weight",
                     "name": "weight",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -110,12 +117,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57c3bbe381c73"
                 },
                 {
                     "key": "field_58d709ff65413",
                     "label": "Country of Origin",
                     "name": "origin",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "eg. Canada, Mexico",
                     "required": 0,
@@ -129,12 +138,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57c3bbe381c73"
                 },
                 {
                     "key": "field_58d70a3565415",
                     "label": "Availability",
                     "name": "available_from",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "eg. Available Year Round",
                     "required": 0,
@@ -148,12 +159,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57c3bbe381c73"
                 },
                 {
                     "key": "field_59339619851a2",
                     "label": "Product Details",
                     "name": "details",
+                    "aria-label": "",
                     "type": "repeater",
                     "instructions": "",
                     "required": 0,
@@ -165,7 +178,7 @@
                     },
                     "collapsed": "",
                     "min": 2,
-                    "max": "",
+                    "max": 0,
                     "layout": "row",
                     "button_label": "Add Row",
                     "sub_fields": [
@@ -173,6 +186,7 @@
                             "key": "field_59339649851a3",
                             "label": "Label",
                             "name": "label",
+                            "aria-label": "",
                             "type": "text",
                             "instructions": "",
                             "required": 0,
@@ -186,12 +200,14 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "maxlength": ""
+                            "maxlength": "",
+                            "parent_repeater": "field_59339619851a2"
                         },
                         {
                             "key": "field_59339679851a5",
                             "label": "Info",
                             "name": "info",
+                            "aria-label": "",
                             "type": "text",
                             "instructions": "",
                             "required": 0,
@@ -205,14 +221,18 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "maxlength": ""
+                            "maxlength": "",
+                            "parent_repeater": "field_59339619851a2"
                         }
-                    ]
+                    ],
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_57c3bbe381c73"
                 },
                 {
                     "key": "field_594b6a0d5e584",
                     "label": "Related Products",
                     "name": "related",
+                    "aria-label": "",
                     "type": "relationship",
                     "instructions": "",
                     "required": 0,
@@ -232,12 +252,14 @@
                     "elements": "",
                     "min": "",
                     "max": "",
-                    "return_format": "id"
+                    "return_format": "id",
+                    "parent_repeater": "field_57c3bbe381c73"
                 },
                 {
                     "key": "field_5e39d786fbb64",
                     "label": "Units",
                     "name": "units",
+                    "aria-label": "",
                     "type": "repeater",
                     "instructions": "",
                     "required": 0,
@@ -248,8 +270,8 @@
                         "id": ""
                     },
                     "collapsed": "",
-                    "min": "",
-                    "max": "",
+                    "min": 0,
+                    "max": 0,
                     "layout": "table",
                     "button_label": "Add Row",
                     "sub_fields": [
@@ -257,6 +279,7 @@
                             "key": "field_5e39d797fbb65",
                             "label": "Unit Image",
                             "name": "unit_img",
+                            "aria-label": "",
                             "type": "image",
                             "instructions": "",
                             "required": 0,
@@ -275,12 +298,14 @@
                             "max_width": "",
                             "max_height": "",
                             "max_size": "",
-                            "mime_types": ""
+                            "mime_types": "",
+                            "parent_repeater": "field_5e39d786fbb64"
                         },
                         {
                             "key": "field_5e39d7c4fbb66",
                             "label": "Unit Size",
                             "name": "unit_size",
+                            "aria-label": "",
                             "type": "text",
                             "instructions": "",
                             "required": 0,
@@ -294,12 +319,14 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "maxlength": ""
+                            "maxlength": "",
+                            "parent_repeater": "field_5e39d786fbb64"
                         },
                         {
                             "key": "field_5e39d84bf55e6",
                             "label": "Unit Description",
                             "name": "unit_description",
+                            "aria-label": "",
                             "type": "text",
                             "instructions": "",
                             "required": 0,
@@ -313,16 +340,21 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "maxlength": ""
+                            "maxlength": "",
+                            "parent_repeater": "field_5e39d786fbb64"
                         }
-                    ]
+                    ],
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_57c3bbe381c73"
                 }
-            ]
+            ],
+            "rows_per_page": 20
         },
         {
             "key": "field_57c3bdb3d4c4e",
             "label": "Product Info",
             "name": "product_info",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -342,6 +374,7 @@
                     "key": "field_57c3bdd1d4c4f",
                     "label": "Characteristics",
                     "name": "characteristics",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -355,12 +388,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57c3bdb3d4c4e"
                 },
                 {
                     "key": "field_57c3bde3d4c50",
                     "label": "Flavour & Texture",
                     "name": "flavour",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -374,12 +409,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57c3bdb3d4c4e"
                 },
                 {
                     "key": "field_57c3bdf7d4c51",
                     "label": "Nutrition",
                     "name": "nutrition",
+                    "aria-label": "",
                     "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
@@ -392,12 +429,15 @@
                     "default_value": "<ul>\r\n<li>Nutrition Info 1<\/li>\r\n<li>Nutrition info 2<\/li>\r\n<li>Nutrition info 3<\/li>\r\n<\/ul>",
                     "tabs": "all",
                     "toolbar": "full",
-                    "media_upload": 0
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_57c3bdb3d4c4e"
                 },
                 {
                     "key": "field_57d21fac13b3c",
                     "label": "Nutrition Info",
                     "name": "nutrition_info",
+                    "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -416,12 +456,14 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": ""
+                    "mime_types": "",
+                    "parent_repeater": "field_57c3bdb3d4c4e"
                 },
                 {
                     "key": "field_57c3be58d4c52",
                     "label": "Storage",
                     "name": "storage",
+                    "aria-label": "",
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
@@ -435,9 +477,28 @@
                     "placeholder": "",
                     "maxlength": "",
                     "rows": "",
-                    "new_lines": "wpautop"
+                    "new_lines": "wpautop",
+                    "parent_repeater": "field_57c3bdb3d4c4e"
                 }
-            ]
+            ],
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_649c651bfb9d3",
+            "label": "Product Asset",
+            "name": "product_asset",
+            "aria-label": "",
+            "type": "oembed",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "width": "",
+            "height": ""
         }
     ],
     "location": [
@@ -455,7 +516,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1580849237
+    "show_in_rest": 0,
+    "modified": 1687971108
 }
