@@ -55,7 +55,7 @@ cc_do_title_container( $title );
 
     $intro_text = "Immerse yourself in Windset Living, where we discuss everything from the latest trends in agriculture, your favourite recipes, and our commitment to the communities we grow in! We invite you to read through our Windset Living posts or find us on social @windsetfarms. Follow along with Your Friends in Freshness<sup>®</sup>!";
 
-    $intro_copy = sprintf('<div class="col s12 m12 l12 intro-text" style="font-size: 24px; padding: 0 60px 0 60px; text-align:center;"><p style="line-height: 1.3em;font-weight: 300;">%s</p></div>', $intro_text);
+    $intro_copy = sprintf('<div class="col s12 m12 l12 intro-text" style="font-size: 24px; padding: 0 60px 60px 60px; text-align:center;"><p style="line-height: 1.3em;font-weight: 300;">%s</p></div>', $intro_text);
 
 
     $embed_social_combined_feed = '<div class="embedsocial-hashtag" data-ref="de0987c773b46253398a3479f34ff4002b348f65"></div> <script> (function(d, s, id) { var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js); }(document, "script", "EmbedSocialHashtagScript")); </script>';

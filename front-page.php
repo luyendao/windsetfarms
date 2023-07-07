@@ -7,8 +7,12 @@
   <?php
 
 
-   if (is_front_page()) {
-   	echo do_shortcode('[elementor-template id="23499"]');
+if (is_front_page()) {
+
+	$value = get_field( "slideshow_shortcode");
+	
+	echo do_shortcode($value);
+	//echo do_shortcode('[elementor-template id="31247"]');
    } else {
    cc_do_title_container();
    } 
