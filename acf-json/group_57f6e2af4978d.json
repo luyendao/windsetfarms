@@ -1,0 +1,44 @@
+{
+    "key": "group_57f6e2af4978d",
+    "title": "Recipe PDF",
+    "fields": [
+        {
+            "key": "field_57f6e2b925568",
+            "label": "Recipe PDF",
+            "name": "pdf",
+            "type": "file",
+            "instructions": "If no PDF file is selected, a \"Print Recipe\" button would appear instead.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": 15,
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "recipes"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "local": "php",
+    "modified": 1540443867
+}

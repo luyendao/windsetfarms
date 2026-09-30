@@ -1,0 +1,53 @@
+{
+    "key": "group_57fd615a3811f",
+    "title": "In the Kitchen",
+    "fields": [
+        {
+            "key": "field_57fd61de1bae4",
+            "label": "Chefs",
+            "name": "chefs",
+            "type": "user",
+            "instructions": "Select the Chefs that you wish to featured on this page. To edit their biography, please go to Dashboard > Users and edit their user profile.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": [
+                "editor",
+                "author",
+                "contributor"
+            ],
+            "allow_null": 0,
+            "multiple": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-chefs.php"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "342"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "local": "php",
+    "modified": 1540443866
+}
