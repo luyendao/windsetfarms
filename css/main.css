@@ -4626,6 +4626,7 @@ h4.career-title{
 /* Sticky header: the logo is cropped into the bar, so hide the ladybug */
 .header.sticky .logo-ladybug {
   opacity: 0;
+  visibility: hidden;
 }
 
 /* ==========================================================

@@ -40,6 +40,7 @@ if (is_front_page()) {
     cc_do_home_intro();
     cc_do_home_sustainability();
     cc_do_home_products();
+    cc_do_home_slider();
     cc_do_home_recipes();
     cc_do_home_social();
 

@@ -66,21 +66,172 @@
   margin: 0 auto 60px;
 }
 
-/* Responsive 16:9 YouTube embed */
+/* Video thumbnail – opens the lightbox */
 .ws-home-intro__video {
   position: relative;
+  display: block;
+  width: 100%;
   max-width: 730px;
   margin: 0 auto 45px;
-  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 0;
   background: #000;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.ws-home-intro__video iframe {
+.ws-home-intro__video img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.ws-home-intro__video:hover img,
+.ws-home-intro__video:focus-visible img {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+.ws-home-intro__video:focus-visible {
+  outline: 3px solid #d61920;
+  outline-offset: 4px;
+}
+
+/* Play button overlay (translucent circle, as in the mockup) */
+.ws-video-trigger__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  margin: -45px 0 0 -45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.ws-video-trigger__play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -18px 0 0 -11px;
+  border-style: solid;
+  border-width: 18px 0 18px 30px;
+  border-color: transparent transparent transparent #4a4a4a;
+}
+
+.ws-home-intro__video:hover .ws-video-trigger__play,
+.ws-home-intro__video:focus-visible .ws-video-trigger__play {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.screen-reader-text {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ----------------------------------------------------------
+   Video lightbox (16:9 YouTube embed)
+   ---------------------------------------------------------- */
+.ws-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;               /* above the sticky header (999) and admin bar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ws-lightbox[hidden] {
+  display: none;
+}
+
+.ws-lightbox.is-open {
+  opacity: 1;
+}
+
+.ws-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+.ws-lightbox__dialog {
+  position: relative;
+  width: min(1100px, 100%, calc((100vh - 120px) * 16 / 9));   /* fit width and height */
+  transform: scale(0.96);
+  transition: transform 0.2s ease;
+}
+
+.ws-lightbox.is-open .ws-lightbox__dialog {
+  transform: scale(1);
+}
+
+.ws-lightbox__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.ws-lightbox__frame iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.ws-lightbox__close {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 30px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.ws-lightbox__close:hover {
+  color: #f44336;
+}
+
+/* Materialize gives focused buttons a background – keep the X clean */
+.ws-lightbox__close:focus {
+  background: none;
+  outline: none;
+}
+
+.ws-lightbox__close:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+html.ws-lightbox-open,
+html.ws-lightbox-open body {
+  overflow: hidden;             /* no page scroll behind the lightbox */
 }
 
 /* Button uses the theme .btn styles as-is */
@@ -440,6 +591,79 @@
 }
 
 /* ----------------------------------------------------------
+   4b. Homepage slider (Slick) – full-width image slides
+   Arrows/dots reuse the theme's Slick styles in main.css,
+   repositioned here.
+   ---------------------------------------------------------- */
+.ws-home-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+}
+
+/* Every slide gets the PSD band ratio (1440 x 563) so mixed image sizes
+   don't make the slider jump; images are cropped to fill (centre). */
+.ws-home-slider__slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1440 / 563;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ws-home-slider__slide a {
+  display: block;
+}
+
+/* main.css pads every .slick-slide by 60px – full bleed here */
+.ws-home-slider .slick-slide {
+  padding: 0;
+}
+
+/* Before Slick initialises, show only the first slide (no stacked flash) */
+.ws-home-slider .js-ws-slider:not(.slick-initialized) .ws-home-slider__slide + .ws-home-slider__slide {
+  display: none;
+}
+
+.ws-home-slider .slick-arrow {
+  top: 50%;
+  margin-top: -24px;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.15);
+  transition: background 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.ws-home-slider .slick-arrow:hover,
+.ws-home-slider .slick-arrow:focus-visible {
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+.ws-home-slider .slick-arrow:focus {
+  outline: none;
+}
+
+.ws-home-slider .slick-prev { left: 30px; }
+.ws-home-slider .slick-next { right: 30px; }
+
+.ws-home-slider .slick-dots {
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.ws-home-slider .slick-dots li {
+  margin: 0 6px !important;
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------
    Responsive
    ---------------------------------------------------------- */
 @media only screen and ( max-width: 992px ) {
@@ -476,6 +700,10 @@
   .ws-home-products__title { font-size: 50px; margin-bottom: 24px; }
   .ws-home-products__copy { font-size: 17px; line-height: 30px; }
   .ws-home-products .section-product-grid { margin: 40px auto 60px; }
+
+  .ws-home-slider__slide img { aspect-ratio: 4 / 3; }  /* taller band on phones */
+  .ws-home-slider .slick-dots { bottom: 10px; }
+  .ws-home-slider .slick-dots li { width: 10px; height: 10px; margin: 0 5px !important; }
 
   .ws-home-recipes { padding-bottom: 50px; }
   .ws-home-recipes__hero { aspect-ratio: auto; min-height: 560px; }

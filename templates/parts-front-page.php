@@ -313,10 +313,22 @@ function cc_home_image( $name, $fallback_url = '', $size = 'full' ) {
   return $out;
 }
 
+// YouTube ID from watch?v=, youtu.be/, /embed/, /shorts/ links (or a bare 11-char ID)
+function cc_home_youtube_id( $url ) {
+  $url = trim( (string) $url );
+  if ( preg_match( '~^[A-Za-z0-9_-]{11}$~', $url ) ) {
+    return $url;
+  }
+  if ( preg_match( '~(?:youtube(?:-nocookie)?\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/|v/)|youtu\.be/)([A-Za-z0-9_-]{11})~', $url, $m ) ) {
+    return $m[1];
+  }
+  return '';
+}
+
 /**
- * Section 2 – Intro: heading, copy, embedded video, Learn More button
+ * Section 2 – Intro: heading, copy, video thumbnail (opens lightbox), Learn More button
  */
-function cc_do_home_intro( $video_url = WS_HOME_VIDEO_URL ) {
+function cc_do_home_intro() {
 
   // ACF: Homepage > Heading Title / Heading Subtitle (fallbacks = current design copy)
   $title    = cc_home_field( 'heading_title', 'Your Friends<br> in Freshness&reg;' );
@@ -324,7 +336,11 @@ function cc_do_home_intro( $video_url = WS_HOME_VIDEO_URL ) {
   $btn_url  = cc_home_field( 'heading_learn_more_link', '#' );
   $btn_text = 'Learn More';
 
-  $video_id = get_video_id( $video_url );
+  // Video: URL field (falls back to the placeholder link) + thumbnail image field
+  $video_url = cc_home_field( 'heading_video_link', WS_HOME_VIDEO_URL );
+  $video_id  = cc_home_youtube_id( $video_url );
+  $thumb     = cc_home_image( 'heading_video_thumbnail', $video_id ? 'https://img.youtube.com/vi/' . $video_id . '/maxresdefault.jpg' : '', 'large' );
+  $thumb_alt = $thumb['alt'] ? $thumb['alt'] : 'Play the Windset Farms video';
   ?>
   <section class="ws-home-intro">
     <div class="ws-home-intro__inner">
@@ -333,16 +349,15 @@ function cc_do_home_intro( $video_url = WS_HOME_VIDEO_URL ) {
 
       <div class="ws-home-intro__copy"><?php echo cc_home_format_copy( $copy ); ?></div>
 
-      <?php if ( $video_id ) { ?>
-        <div class="ws-home-intro__video">
-          <iframe
-            src="<?php echo esc_url( 'https://www.youtube.com/embed/' . $video_id . '?rel=0&modestbranding=1' ); ?>"
-            title="Windset Farms – Your Friends in Freshness"
-            frameborder="0"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
+      <?php if ( $video_id && $thumb['url'] ) { ?>
+        <button type="button" class="ws-home-intro__video ws-video-trigger"
+          data-video-id="<?php echo esc_attr( $video_id ); ?>"
+          aria-haspopup="dialog" aria-controls="ws-video-lightbox">
+          <img src="<?php echo esc_url( $thumb['url'] ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" loading="lazy"
+            <?php if ( $thumb['width'] && $thumb['height'] ) { ?>width="<?php echo (int) $thumb['width']; ?>" height="<?php echo (int) $thumb['height']; ?>"<?php } ?>>
+          <span class="ws-video-trigger__play" aria-hidden="true"></span>
+          <span class="screen-reader-text">Play video</span>
+        </button>
       <?php } ?>
 
       <div class="ws-home-intro__cta">
@@ -351,6 +366,31 @@ function cc_do_home_intro( $video_url = WS_HOME_VIDEO_URL ) {
 
     </div>
   </section>
+
+  <?php if ( $video_id ) { cc_do_home_video_lightbox(); } ?>
+  <?php
+}
+
+/**
+ * Video lightbox (one per page). js/home.js injects the YouTube iframe on open
+ * and removes it on close, so the video always stops when the lightbox closes.
+ */
+function cc_do_home_video_lightbox() {
+  static $done = false;
+  if ( $done ) {
+    return;
+  }
+  $done = true;
+  ?>
+  <div class="ws-lightbox" id="ws-video-lightbox" role="dialog" aria-modal="true" aria-label="Video" hidden>
+    <div class="ws-lightbox__backdrop" data-ws-close></div>
+    <div class="ws-lightbox__dialog">
+      <button type="button" class="ws-lightbox__close" data-ws-close aria-label="Close video">
+        <i class="fa fa-close" aria-hidden="true"></i>
+      </button>
+      <div class="ws-lightbox__frame"></div>
+    </div>
+  </div>
   <?php
 }
 
@@ -495,6 +535,60 @@ function cc_do_home_social() {
           d.getElementsByTagName("head")[0].appendChild(js);
         }(document, "script", "EmbedSocialHashtagScript"));
       </script>
+    </div>
+  </section>
+  <?php
+}
+
+/**
+ * Section 4b – Homepage slider (where "Aria" sits in the PSD)
+ * ACF repeater: homepage_slider → image (array), link_to (url)
+ * Uses Slick (already loaded by the theme) – swipe, autoplay, arrows, dots. Init in js/home.js.
+ */
+function cc_do_home_slider() {
+  global $fields;
+
+  $rows = ( ! empty( $fields['homepage_slider'] ) && is_array( $fields['homepage_slider'] ) ) ? $fields['homepage_slider'] : array();
+  $slides = array();
+
+  foreach ( $rows as $row ) {
+    $img = isset( $row['image'] ) ? $row['image'] : false;
+    if ( is_numeric( $img ) && function_exists( 'acf_get_attachment' ) ) {
+      $img = acf_get_attachment( $img );
+    }
+    if ( is_array( $img ) && ! empty( $img['url'] ) ) {
+      $slides[] = array(
+        'img'  => $img,
+        'link' => isset( $row['link_to'] ) ? trim( $row['link_to'] ) : '',
+      );
+    }
+  }
+
+  if ( empty( $slides ) ) {
+    return;
+  }
+  ?>
+  <section class="ws-home-slider" aria-roledescription="carousel" aria-label="Featured products">
+    <div class="ws-home-slider__track<?php echo count( $slides ) > 1 ? ' js-ws-slider' : ''; ?>">
+      <?php foreach ( $slides as $i => $slide ) {
+        $img  = $slide['img'];
+        $alt  = ! empty( $img['alt'] ) ? $img['alt'] : ( ! empty( $img['title'] ) ? $img['title'] : 'Windset Farms' );
+        $attr = sprintf(
+          'src="%s" alt="%s"%s%s',
+          esc_url( $img['url'] ),
+          esc_attr( $alt ),
+          ( ! empty( $img['width'] ) && ! empty( $img['height'] ) ) ? sprintf( ' width="%d" height="%d"', $img['width'], $img['height'] ) : '',
+          $i > 0 ? ' loading="lazy"' : ''
+        );
+        ?>
+        <div class="ws-home-slider__slide">
+          <?php if ( $slide['link'] ) { ?>
+            <a href="<?php echo esc_url( $slide['link'] ); ?>"><img <?php echo $attr; ?>></a>
+          <?php } else { ?>
+            <img <?php echo $attr; ?>>
+          <?php } ?>
+        </div>
+      <?php } ?>
     </div>
   </section>
   <?php

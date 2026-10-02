@@ -6,7 +6,7 @@
 function windset_scripts() {
   wp_enqueue_style( 'materialize', get_template_directory_uri() . '/css/materialize.min.css');
   wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css');
-  wp_enqueue_style( 'style', get_template_directory_uri() . '/css/main.css', array(), '1.12331125');
+  wp_enqueue_style( 'style', get_template_directory_uri() . '/css/main.css', array(), '1.12331126');
   //wp_enqueue_style( 'typekit', 'https://use.typekit.net/ifl3ypf.css', array(), '1.0');
   wp_enqueue_script( 'materialize', get_template_directory_uri() . '/js/materialize.min.js', array('jquery'), '1.0.0', true );
   wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.0.0', true );
@@ -19,6 +19,8 @@ function windset_scripts() {
   if ( is_front_page() ) {
     $home_css = get_template_directory() . '/css/home.css';
     wp_enqueue_style( 'windset-home', get_template_directory_uri() . '/css/home.css', array( 'style' ), file_exists( $home_css ) ? filemtime( $home_css ) : null );
+    $home_js = get_template_directory() . '/js/home.js';
+    wp_enqueue_script( 'windset-home', get_template_directory_uri() . '/js/home.js', array( 'jquery', 'slick' ), file_exists( $home_js ) ? filemtime( $home_js ) : null, true );
   }
 
 }
