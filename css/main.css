@@ -176,12 +176,18 @@ h3.small,
   font-weight: 600;
 }
 
-/* Recoleta Medium (2026 refresh). The .section selector is needed to beat
-   ".section h3.font-script" (FrostySkyScript) further down this file. */
+/* Recoleta Bold (2026 refresh) for every .font-script heading, inside or
+   outside a .section. */
+h2.font-script,
+h3.font-script {
+  font-family: 'Recoleta', serif;
+  font-weight: 700;
+}
+
 h3.font-script.red-text,
 .section h3.font-script.red-text {
   font-family: 'Recoleta', serif;
-  font-weight: 500;
+  font-weight: 700;               /* Recoleta Bold */
   font-size: 82px;
   margin-bottom: 20px;
 }
@@ -1489,8 +1495,8 @@ nav .sub-menu li:nth-child(1) a {
 }
 .section h2.font-script{
   margin-top: 25px;
-  font-family: 'FrostySkyScript', 'TheWildThingsScript', sans-serif;
-  font-weight: normal;
+  font-family: 'Recoleta', serif;   /* was FrostySkyScript – Recoleta Bold (2026 refresh) */
+  font-weight: 700;
 }
 .section h3 {
   font-size: 36px;
@@ -1498,9 +1504,9 @@ nav .sub-menu li:nth-child(1) a {
   margin: 10px 0 10px 0;
 }
 .section h3.font-script {
-  font-family: 'FrostySkyScript', 'TheWildThingsScript', sans-serif;
+  font-family: 'Recoleta', serif;   /* was FrostySkyScript – Recoleta Bold (2026 refresh) */
   font-size: 75px;
-  font-weight: normal;
+  font-weight: 700;
 }
 .section .des {
   line-height: 2;
@@ -2876,7 +2882,8 @@ blockquote {
   border: 0;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  font-family: 'TheWildThingsScript';
+  font-family: 'Recoleta', serif;   /* was TheWildThingsScript (font file disabled) – Recoleta Bold (2026 refresh) */
+  font-weight: 700;
   font-size: 60px;
   line-height: 1;
   color: #555555;
@@ -3074,17 +3081,37 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]),
 .section-logos .logos{
   list-style: none;
   display: flex;
+  align-items: center;            /* line the logos up on a shared centre line (2026 refresh) */
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
 }
 .section-logos .logos .logo{
   flex-grow: 1;
   flex-basis: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .section-logos .logos .logo:before{
   display: none;
 }
 
 .section-logos .logos .logo img{
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 140px;              /* keeps tall badges from towering over the round ones */
+  height: auto;
+}
+
+@media only screen and ( max-width: 600px ) {
+  .section-logos .logos {
+    flex-wrap: wrap;
+  }
+  .section-logos .logos .logo {
+    flex: 0 0 calc(25% - 15px);   /* 4 per row on phones */
+  }
 }
 .content-main-image-preview{
 }
