@@ -176,7 +176,12 @@ h3.small,
   font-weight: 600;
 }
 
-h3.font-script.red-text {
+/* Recoleta Medium (2026 refresh). The .section selector is needed to beat
+   ".section h3.font-script" (FrostySkyScript) further down this file. */
+h3.font-script.red-text,
+.section h3.font-script.red-text {
+  font-family: 'Recoleta', serif;
+  font-weight: 500;
   font-size: 82px;
   margin-bottom: 20px;
 }
@@ -1981,46 +1986,46 @@ nav .sub-menu li:nth-child(1) a {
 .section-sponsors .sponsor-content {
   margin-bottom: 40px;
 }
+/* Sponsor logos – one row on desktop, wraps on smaller screens (2026 refresh) */
 .section-sponsors .sponsors {
-  width: 103% !important;
-  margin: 0 -1.5% !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px 40px;
+  padding: 0 20px;
+  margin-bottom: 60px;          /* space before the next section (old fixed-height cards gave this) */
 }
 .section-sponsors .sponsor {
-  height: 360px;
-  overflow: hidden;
+  flex: 1 1 0;
+  min-width: 140px;
+  max-width: 220px;
   text-align: center;
-  margin: 0%;
-  display: inline-block;
 }
 .section-sponsors .sponsor-logo {
-  margin: 0 1%;
-  border-radius: 4px;
-  background-color: transparent;
-  border: solid 1px #FFF;
-  height: 260px;
-  position: relative;
-  display: inline-block !important;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
 }
 .section-sponsors .sponsor img {
+  display: block;
   max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: -1;
+  object-fit: contain;
 }
 
 .section-sponsors .name {
   font-family: 'sofia-pro', sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
   line-height: 1.27;
   letter-spacing: 1px;
   text-align: center;
   color: #666666;
-  padding: 20px 0 0 0;
-  height: 100px;
+  padding: 12px 0 0 0;
 }
 
 .section-news {
@@ -4623,6 +4628,14 @@ h4.career-title{
   }
 }
 
+/* Desktop, header not yet sticky: the "Windset Living" dropdown (menu-item-17)
+   opens underneath the ladybug, so fade the ladybug out while it's open.
+   If that menu item is ever re-created in Appearance > Menus, update the ID. */
+.header:not(.sticky) nav.desktop:has(.menu-item-17:hover) .logo-ladybug,
+.header:not(.sticky) nav.desktop:has(.menu-item-17:focus-within) .logo-ladybug {
+  opacity: 0;
+}
+
 /* Sticky header: the logo is cropped into the bar, so hide the ladybug */
 .header.sticky .logo-ladybug {
   opacity: 0;
@@ -4659,6 +4672,43 @@ h4.career-title{
   width: 70px;                    /* 63.6% x 110 */
   height: auto;
   pointer-events: none;
+}
+
+/* Tablet/desktop: contact block sits 60px to the right of the logo,
+   left-aligned; the rest of the footer row stays empty */
+@media only screen and ( min-width: 601px ) {
+  .footer .upper .section-inner > .row {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .footer .upper .section-inner > .row::after {
+    display: none;                /* drop Materialize's clearfix in the flex row */
+  }
+
+  .footer .upper .row > .col.footer-brand {   /* beats Materialize .row .col.l7 */
+    flex: 0 0 auto;
+    width: auto;
+    margin-left: 0;              /* Materialize's margin:auto would centre it in the flex row */
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .footer .footer-logo {
+    margin-right: 0;
+  }
+
+  .footer .upper .row > .col.footer-contact {
+    flex: 0 1 500px;
+    width: auto;
+    margin-left: 60px;            /* gap from the logo's right edge */
+    padding-left: 0;
+  }
+
+  .footer .footer-contact > .col,
+  .footer .footer-contact > .row > .col:first-child {
+    padding-left: 0;              /* text starts exactly 60px from the logo */
+  }
 }
 
 /* Stacked footer on phones: centre the logo */

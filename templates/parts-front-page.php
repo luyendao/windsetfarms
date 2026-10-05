@@ -242,15 +242,28 @@ define( 'WS_HOME_VIDEO_URL', 'https://www.youtube.com/watch?v=hFCOXcIPJQY' );
 function cc_do_home_hero() {
 
   $video_dir = get_template_directory_uri() . '/video/';
-  $video_mp4 = $video_dir . 'hero-placeholder.mp4';
-  $poster    = $video_dir . 'hero-placeholder.jpg';
+
+  // ACF: Homepage > Hero video URL (url) + Hero poster (image). Fallbacks = theme placeholders.
+  $video_url = cc_home_field( 'hero_video', $video_dir . 'hero-placeholder.mp4' );
+  $video_mobile = cc_home_field( 'hero_video_mobile', '' );   // optional smaller file for phones (≤ 767px)
+  $poster    = cc_home_image( 'hero_video_fallback', $video_dir . 'hero-placeholder.jpg' );
+
+  $ext        = strtolower( pathinfo( wp_parse_url( $video_url, PHP_URL_PATH ), PATHINFO_EXTENSION ) );
+  $video_type = ( $ext === 'webm' ) ? 'video/webm' : 'video/mp4';
   ?>
-  <section class="ws-home-hero">
-    <video class="ws-home-hero__video"
-      autoplay muted loop playsinline preload="auto"
-      poster="<?php echo esc_url( $poster ); ?>"
-      aria-hidden="true">
-      <source src="<?php echo esc_url( $video_mp4 ); ?>" type="video/mp4">
+  <section class="ws-home-hero"<?php if ( $poster['url'] ) { ?> style="background-image: url(<?php echo esc_url( $poster['url'] ); ?>);"<?php } ?>>
+    <?php
+    /*
+     * The video source is set by js/home.js (data-src) so it can be skipped for
+     * visitors with "reduce motion" or data-saver on – they just see the poster.
+     * The video also pauses while it's scrolled out of view.
+     */
+    ?>
+    <video class="ws-home-hero__video js-ws-hero-video"
+      muted loop playsinline preload="none"
+      <?php if ( $poster['url'] ) { ?>poster="<?php echo esc_url( $poster['url'] ); ?>"<?php } ?>
+      aria-hidden="true" tabindex="-1">
+      <source data-src="<?php echo esc_url( $video_url ); ?>"<?php if ( $video_mobile ) { ?> data-src-mobile="<?php echo esc_url( $video_mobile ); ?>"<?php } ?> type="<?php echo esc_attr( $video_type ); ?>">
     </video>
   </section>
   <?php

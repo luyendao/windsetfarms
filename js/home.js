@@ -96,3 +96,45 @@
     });
   });
 })(window.jQuery);
+
+/**
+ * Hero background video – load + autoplay, unless the visitor prefers reduced
+ * motion or has data-saver on (poster only). Pauses when scrolled out of view.
+ */
+(function () {
+  'use strict';
+
+  var video = document.querySelector('.js-ws-hero-video');
+  if (!video) { return; }
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (reduceMotion || saveData) { return; }
+
+  // Phones get the smaller file (hero_video_mobile) when one is set
+  var isMobile = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+  var sources = video.querySelectorAll('source[data-src]');
+  for (var i = 0; i < sources.length; i++) {
+    var mobileSrc = sources[i].getAttribute('data-src-mobile');
+    var src = (isMobile && mobileSrc) ? mobileSrc : sources[i].getAttribute('data-src');
+    sources[i].type = /\.webm(\?|#|$)/i.test(src) ? 'video/webm' : 'video/mp4';  // match the file actually used
+    sources[i].src = src;
+  }
+  video.muted = true;               // required for autoplay on iOS / Chrome
+  video.load();
+
+  function play() {
+    var p = video.play();
+    if (p && p.catch) { p.catch(function () { /* autoplay blocked: poster stays */ }); }
+  }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { play(); } else { video.pause(); }
+      });
+    }, { threshold: 0.1 }).observe(video);
+  } else {
+    play();
+  }
+})();

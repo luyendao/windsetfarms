@@ -403,27 +403,29 @@ function get_section_sponsors( $sponsor_block = null ) {
       <div class="row">
         <div class="col s12 m12 l12 center sponsors">
 
-          <?php foreach ( $sponsors as $key => $sponsor ) {
+          <?php foreach ( (array) $sponsors as $key => $sponsor ) {
 
-            $img = isset( $sponsor['logo']['sizes']['medium'] ) ? $sponsor['logo']['sizes']['medium']  : false;
-            $img_w = isset( $sponsor['logo']['sizes']['medium-width'] ) ? $sponsor['logo']['sizes']['medium-width']  : false;
-            $img_h = isset( $sponsor['logo']['sizes']['medium-height'] ) ? $sponsor['logo']['sizes']['medium-height']  : false;
-            $img_mh = - $img_h  / 2 . 'px';
-            $img_mw = - $img_w  / 2 . 'px';
-            $name = isset( $sponsor['name'] ) ? $sponsor['name'] : false;
+            $logo  = isset( $sponsor['logo'] ) ? $sponsor['logo'] : false;
+            $img   = isset( $logo['sizes']['medium'] ) ? $logo['sizes']['medium'] : ( isset( $logo['url'] ) ? $logo['url'] : false );
+            $img_w = isset( $logo['sizes']['medium-width'] ) ? $logo['sizes']['medium-width'] : '';
+            $img_h = isset( $logo['sizes']['medium-height'] ) ? $logo['sizes']['medium-height'] : '';
+            $name  = isset( $sponsor['name'] ) ? trim( $sponsor['name'] ) : '';
+            $alt   = $name ? $name : ( ! empty( $logo['alt'] ) ? $logo['alt'] : ( ! empty( $logo['title'] ) ? $logo['title'] : 'Community partner' ) );
 
+            if ( ! $img ) {
+              continue;
+            }
             ?>
             <div class="sponsor">
               <div class="sponsor-logo">
-                <img class="" width="<?php echo $img_w; ?>" style="margin-left: <?php echo $img_mw; ?>; margin-top: <?php echo $img_mh; ?>;"
-                src="<?php echo $img; ?>" />
+                <img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( $alt ); ?>" loading="lazy"
+                  <?php if ( $img_w && $img_h ) { ?>width="<?php echo (int) $img_w; ?>" height="<?php echo (int) $img_h; ?>"<?php } ?>>
               </div>
-
-              <div class="name">
-                <?php echo $name; ?>
-              </div>
+              <?php if ( $name ) { ?>
+                <div class="name"><?php echo esc_html( $name ); ?></div>
+              <?php } ?>
             </div>
-          <?php  } ?>
+          <?php } ?>
         </div>
       </div>
     </div>

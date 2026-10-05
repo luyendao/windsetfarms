@@ -89,7 +89,7 @@
                   <img class="footer-ladybug" src="<?php echo esc_url( get_template_directory_uri() . '/img/ladybug.png' ); ?>" width="471" height="355" alt="" aria-hidden="true"/>
                 </div>
 
-                <div class="col s12 m5 l5">
+                <div class="col s12 m5 l5 footer-contact">
                   <div class="col s12 m12 l12">
                     <h3 class="uppercase">Questions? Get in touch</h3>
                     <?php
