@@ -3085,6 +3085,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]),
   justify-content: center;
   gap: 20px;
   padding: 0;
+  margin: 0 0 120px;              /* space before the next section (its photo overlaps upward with a negative margin) */
 }
 .section-logos .logos .logo{
   flex-grow: 1;

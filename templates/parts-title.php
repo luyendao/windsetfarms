@@ -69,6 +69,16 @@ function cc_do_title_container( $title = null ) {
     $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large', true);
     $img = $thumb_url_array[0];
 
+    // Recipes category page only (/category/recipes/): use its own "Product Category Image"
+    // (ACF prod_cat_img on the Recipes category) when one is set. Other categories are unchanged.
+    $current_cat = get_queried_object();
+    if ( $current_cat && isset( $current_cat->slug ) && $current_cat->slug === 'recipes' && function_exists( 'get_field' ) ) {
+      $recipes_img = get_field( 'prod_cat_img', 'category_' . $current_cat->term_id );
+      if ( ! empty( $recipes_img['url'] ) ) {
+        $img = ! empty( $recipes_img['sizes']['large'] ) ? $recipes_img['sizes']['large'] : $recipes_img['url'];
+      }
+    }
+
   }
 
 

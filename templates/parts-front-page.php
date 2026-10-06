@@ -232,7 +232,7 @@ function cc_magazine_block_cover( $data = null ) {
  * Styles: css/home.css (enqueued on the front page in functions.php)
  * ========================================================== */
 
-// Temporary: YouTube link for the intro video embed
+// Fallback YouTube link for the intro video lightbox (used only if ACF heading_video_url is empty)
 define( 'WS_HOME_VIDEO_URL', 'https://www.youtube.com/watch?v=hFCOXcIPJQY' );
 
 /**
@@ -350,7 +350,7 @@ function cc_do_home_intro() {
   $btn_text = 'Learn More';
 
   // Video: URL field (falls back to the placeholder link) + thumbnail image field
-  $video_url = cc_home_field( 'heading_video_link', WS_HOME_VIDEO_URL );
+  $video_url = cc_home_field( 'heading_video_url', WS_HOME_VIDEO_URL );
   $video_id  = cc_home_youtube_id( $video_url );
   $thumb     = cc_home_image( 'heading_video_thumbnail', $video_id ? 'https://img.youtube.com/vi/' . $video_id . '/maxresdefault.jpg' : '', 'large' );
   $thumb_alt = $thumb['alt'] ? $thumb['alt'] : 'Play the Windset Farms video';
