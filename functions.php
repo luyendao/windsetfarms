@@ -15,6 +15,25 @@ function windset_scripts() {
   wp_enqueue_script( 'social', 'https://static.addtoany.com/menu/page.js', array('jquery'), '1.0.0', true );
   wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0', true );
 
+  // Festiva landing page (page-festiva-cherry-tomato-medley.php): own stylesheet + Typekit
+  // (Sofia Pro), and none of the theme's header/menu scripts – the page has no site header.
+  if ( is_page( 'festiva-cherry-tomato-medley' ) ) {
+    $fl_css = get_template_directory() . '/css/festiva-landing.css';
+    wp_enqueue_style( 'typekit-sofia', 'https://use.typekit.net/ifl3ypf.css', array(), null );
+    wp_enqueue_style( 'windset-festiva-landing', get_template_directory_uri() . '/css/festiva-landing.css', array( 'style' ), file_exists( $fl_css ) ? filemtime( $fl_css ) : null );
+    foreach ( array( 'initial', 'scripts', 'video', 'slick', 'materialize' ) as $handle ) {
+      wp_dequeue_script( $handle );
+    }
+  }
+
+  // Product showcase layout (products with a Hero Background Image)
+  if ( is_singular( 'products' ) && function_exists( 'get_field' ) && get_field( 'hero_background_image', get_queried_object_id() ) ) {
+    $ps_css = get_template_directory() . '/css/product-showcase.css';
+    $ps_js  = get_template_directory() . '/js/product-showcase.js';
+    wp_enqueue_style( 'windset-product-showcase', get_template_directory_uri() . '/css/product-showcase.css', array( 'style' ), file_exists( $ps_css ) ? filemtime( $ps_css ) : null );
+    wp_enqueue_script( 'windset-product-showcase', get_template_directory_uri() . '/js/product-showcase.js', array(), file_exists( $ps_js ) ? filemtime( $ps_js ) : null, true );
+  }
+
   // New homepage styles (front page only), cache-busted by file modified time
   if ( is_front_page() ) {
     $home_css = get_template_directory() . '/css/home.css';

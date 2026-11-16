@@ -427,7 +427,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "<ul>\r\n<li>Nutrition Info 1<\/li>\r\n<li>Nutrition info 2<\/li>\r\n<li>Nutrition info 3<\/li>\r\n<\/ul>",
+                    "default_value": "<ul>\r\n<li>Nutrition Info 1</li>\r\n<li>Nutrition info 2</li>\r\n<li>Nutrition info 3</li>\r\n</ul>",
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 0,
@@ -683,6 +683,33 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_6a2f1c0a7b104",
+            "label": "Recipe Image Link",
+            "name": "recipe_link",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Recipe the photo links to. If empty, the first of the Windset Recipes below is used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "recipes"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
             "key": "field_6939e839e751c",
             "label": "Sash Overlay Image",
             "name": "sash_overlay_image",
@@ -707,6 +734,79 @@
             "mime_types": "",
             "allow_in_bindings": 0,
             "preview_size": "medium"
+        },
+        {
+            "key": "field_6a2f1c0a7b102",
+            "label": "Sash Position",
+            "name": "sash_position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Where the Sash Overlay Image sits.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "recipe_corner": "Over the recipe photo (bottom-left corner)",
+                "right_column": "Right column (under the award)",
+                "section_bottom_left": "Bottom-left edge of the section (e.g. a stripe)"
+            },
+            "default_value": "recipe_corner",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6a2f1c0a7b101",
+            "label": "Award Image",
+            "name": "award_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional award badge shown in the right column beside the copy (e.g. Aria).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_6a2f1c0a7b103",
+            "label": "Accent Colour",
+            "name": "accent_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Background colour of the Characteristics / Nutrition / Storage band.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#d61920",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "allow_in_bindings": 0
         }
     ],
     "location": [
@@ -728,5 +828,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765491183
+    "modified": 1794856519
 }

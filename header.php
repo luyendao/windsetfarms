@@ -46,7 +46,9 @@
           dynamic_sidebar( 'nav-translation' );
           $ajax_translator = ob_get_clean();
 
-          if ( is_dev() ) {
+          // A fake translator dropdown used to be injected on any "localhost" URL for styling work.
+          // Now opt-in only: define( 'WINDSET_SHOW_DEV_TRANSLATOR', true ); in wp-config.php to see it.
+          if ( is_dev() && defined( 'WINDSET_SHOW_DEV_TRANSLATOR' ) && WINDSET_SHOW_DEV_TRANSLATOR ) {
 
               $ajax_translator = '
               <div id="translator-dropdown-jquery-container" class="testy translator-dropdown-container translator-dropdown-container-custom translator-dropdown-jquery translator-dropdown-floating-left translator-dropdown-names translator-dropdown-hover translator-dropdown-low-res">

@@ -1,0 +1,410 @@
+/* ==========================================================
+   Product showcase layout (templates/product-showcase.php)
+   Replaces the Elementor Pro single-product templates.
+   Measurements taken from the Elementor versions of Aria,
+   Festiva and SNAP. Accent colour comes from ACF accent_color
+   via the --ws-accent custom property.
+   ========================================================== */
+
+.ws-product {
+  --ws-accent: #d61920;
+  --ws-inner: 1140px;
+}
+
+.ws-product__inner {
+  width: 100%;
+  max-width: calc(var(--ws-inner) + 40px);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Hero ---------- */
+.ws-product__hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 710px;
+  padding: 160px 20px 30px;      /* top clears the overlaid header */
+  background-color: #111;
+  background-size: cover;
+  background-position: center;
+}
+
+.ws-product__hero-title {
+  margin: 0;
+  line-height: 0;
+  font-size: 0;                   /* the title is an image; keeps the h1 for SEO */
+}
+
+.ws-product__hero-title img {
+  display: block;
+  width: auto;
+  max-width: min(560px, 90vw);
+  max-height: 480px;
+  height: auto;
+}
+
+/* ---------- Story (copy + recipe + award / sash) ---------- */
+.ws-product__story {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0;
+  background-color: #1a1a1a;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: calc(min(100vw, 1440px) * var(--ws-story-ratio, 0));
+}
+
+.ws-product__story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 728px);
+  gap: 20px;
+}
+
+.ws-product__story-grid.has-aside {
+  grid-template-columns: minmax(0, 616px) minmax(0, 504px);
+}
+
+.ws-product__story-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.ws-product__section-title {
+  margin: 0;
+  line-height: 0;
+  font-size: 0;
+}
+
+.ws-product__section-title img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.ws-product__copy,
+.ws-product__copy p {
+  font-family: 'TiemposText', Georgia, serif;
+  font-size: 16px;
+  line-height: 2.2;
+  color: #fff;
+}
+
+.ws-product__copy p {
+  margin: 0 0 1em;
+}
+
+.ws-product__copy p:last-child {
+  margin-bottom: 0;
+}
+
+.ws-product__recipe {
+  position: relative;
+  margin: 0;
+  max-width: 600px;
+}
+
+.ws-product__recipe img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ws-product__recipe a {
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.ws-product__recipe a:hover {
+  opacity: 0.9;
+}
+
+.ws-product__story-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* sash centres under the award */
+  gap: 40px;
+  width: 241px;
+  max-width: 100%;
+  padding-top: 65px;
+}
+
+.ws-product__award {
+  display: block;
+  width: 241px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Sash / callout positions (ACF sash_position) */
+.ws-product__sash {
+  display: block;
+  height: auto;
+  pointer-events: none;
+}
+
+.ws-sash--right_column .ws-product__sash {
+  width: 160px;
+}
+
+.ws-sash--recipe_corner .ws-product__sash {
+  position: absolute;
+  left: -32px;
+  bottom: -70px;
+  width: 193px;
+}
+
+.ws-product__sash--edge {
+  position: absolute;
+  left: -109px;
+  bottom: 0;
+  width: min(1050px, 60vw);
+  max-width: none;
+}
+
+/* ---------- Available sizes ---------- */
+.ws-product__sizes {
+  padding: 60px 0 30px;
+  background: #fff;
+  text-align: center;
+}
+
+.ws-product__sizes-title {
+  margin: 0;
+  font-family: 'sofia-pro', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  color: #000;
+}
+
+.ws-product__sizes-hint {
+  margin: 0 0 10px;
+  font-family: 'sofia-pro', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #000;
+}
+
+.ws-product__sizes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 40px;
+}
+
+.ws-product__size {
+  margin: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.ws-product__sizes-grid .ws-product__size:not(:only-child) {
+  max-width: 420px;
+}
+
+.ws-product__size a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.ws-product__size img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.25s ease;
+}
+
+.ws-product__size a:hover img {
+  transform: scale(1.03);
+}
+
+.ws-product__size figcaption {
+  font-family: 'sofia-pro', sans-serif;
+  font-size: 24.6px;
+  line-height: 1.2;
+  color: #000;
+}
+
+/* ---------- Info band ---------- */
+.ws-product__info {
+  padding: 60px 0;
+  background: var(--ws-accent);
+  color: #fff;
+}
+
+.ws-product__info-grid {
+  display: grid;
+  grid-template-columns: 342px 342px 380px;
+  gap: 20px;
+}
+
+.ws-product__info h4 {
+  margin: 0 0 20px;
+  font-family: 'sofia-pro', sans-serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+}
+
+.ws-product__info h4.ws-product__info-spaced {
+  margin-top: 30px;
+}
+
+.ws-product__info-text,
+.ws-product__info-text p,
+.ws-product__info-text li {
+  font-family: 'TiemposText', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.ws-product__info-text p {
+  margin: 0 0 1em;
+}
+
+.ws-product__info-text ul {
+  margin: 0 0 1em;
+  padding-left: 1.2em;
+}
+
+.ws-product__info-text ul li {
+  list-style: disc;
+  margin-bottom: 0.8em;
+}
+
+.ws-product__nutrition-link {
+  display: inline-block;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.ws-product__nutrition-link:hover {
+  color: #fff;
+  opacity: 0.8;
+}
+
+/* ---------- Image lightbox (Available sizes) ---------- */
+.ws-img-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: zoom-out;
+}
+
+.ws-img-lightbox[hidden] {
+  display: none;
+}
+
+.ws-img-lightbox img {
+  max-width: min(1200px, 100%);
+  max-height: calc(100vh - 60px);
+  width: auto;
+  height: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  background: #fff;
+}
+
+.ws-img-lightbox__close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ws-img-lightbox__close:focus {
+  background: none;
+}
+
+/* ---------- Responsive ---------- */
+@media only screen and ( max-width: 1199px ) {
+  .ws-product__info-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media only screen and ( max-width: 900px ) {
+  .ws-product__story-grid.has-aside {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ws-product__story-aside {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  .ws-product__story {
+    min-height: 0;
+  }
+
+  .ws-product__award {
+    max-width: 160px;
+  }
+
+  .ws-product__info-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .ws-product__sash--edge {
+    width: 80vw;
+    left: -60px;
+    opacity: 0.6;
+  }
+}
+
+@media only screen and ( max-width: 600px ) {
+  .ws-product__hero {
+    min-height: 420px;
+    padding-top: 120px;
+  }
+
+  .ws-product__hero-title img {
+    max-height: 300px;
+  }
+
+  .ws-product__story {
+    padding: 40px 0;
+  }
+
+  .ws-sash--recipe_corner .ws-product__sash {
+    left: -10px;
+    bottom: -40px;
+    width: 120px;
+  }
+
+  .ws-product__sizes-grid .ws-product__size:not(:only-child) {
+    max-width: 100%;
+  }
+
+  .ws-product__info {
+    padding: 40px 0;
+  }
+
+  .ws-product__info-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .ws-product__info h4 {
+    font-size: 28px;
+  }
+}

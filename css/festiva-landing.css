@@ -1,0 +1,290 @@
+/* ==========================================================
+   Festiva™ Cherry Tomato Medley landing page
+   (page-festiva-cherry-tomato-medley.php) – no site header/footer.
+   Sizes taken from the old Elementor Canvas version.
+   ========================================================== */
+
+body.festiva-landing {
+  margin: 0;
+  background: #0b2a66;
+  overflow-x: hidden;
+}
+
+.fl {
+  --fl-inner: 1140px;
+  --fl-accent: #38b4bf;
+  font-family: 'sofia-pro', sans-serif;
+  color: #fff;
+}
+
+.fl img {
+  max-width: 100%;
+  height: auto;
+}
+
+.fl h1, .fl h2, .fl h3 {
+  margin: 0;
+}
+
+.fl-inner {
+  width: 100%;
+  max-width: calc(var(--fl-inner) + 40px);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.fl-text p {
+  margin: 0;
+  font-family: 'sofia-pro', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: #fff;
+}
+
+.fl-text strong {
+  font-weight: 600;
+  color: var(--fl-accent);
+}
+
+/* ---------- 1. Hero ---------- */
+.fl-hero {
+  position: relative;
+  padding-bottom: 30px;
+  background-color: #10307a;
+  background-size: cover;
+  background-position: center top;
+}
+
+.fl-hero__top {
+  display: grid;
+  grid-template-columns: 308px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.fl-hero__logo img,
+.fl-hero__mark img {
+  display: block;
+}
+
+.fl-hero__mark {
+  line-height: 0;
+  padding-top: 40px;
+}
+
+.fl-hero__mark img {
+  width: 564px;
+}
+
+.fl-hero__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 110px 10px 0;
+}
+
+.fl-hero__title {
+  line-height: 0;
+}
+
+.fl-hero__title img {
+  display: block;
+  width: 577px;
+}
+
+.fl-hero__body .fl-text {
+  max-width: 515px;
+}
+
+.fl-hero__cutout {
+  display: block;
+  width: 631px;
+  margin-left: -150px;            /* spills off the left of the content column, as before */
+}
+
+/* ---------- 2. Quick recipes ---------- */
+.fl-recipes {
+  padding: 60px 0;
+  background: #006aa3;
+  text-align: center;
+}
+
+.fl-recipes__title {
+  line-height: 0;
+  margin-bottom: 20px !important;
+}
+
+.fl-recipes__title img {
+  display: inline-block;
+  width: 360px;
+}
+
+.fl-recipes__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 347px));
+  justify-content: center;
+  gap: 20px 40px;
+}
+
+.fl-recipe {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+
+.fl-recipe img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.fl-recipe:hover img {
+  transform: scale(1.03);
+  opacity: 0.92;
+}
+
+.fl-recipe h3 {
+  margin-top: 20px !important;
+  font-family: 'sofia-pro', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #fff;
+}
+
+/* ---------- 3. Sizes / packaging ---------- */
+.fl-sizes {
+  position: relative;
+  min-height: calc(100vw * 1745 / 1440);   /* artwork is 1440x1745 and scales with the width */
+  padding: 40px 20px 60px;
+  background-color: #0b2a66;
+  background-size: cover;
+  background-position: center top;
+}
+
+.fl-sizes__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.fl-sizes__intro .fl-text {
+  max-width: 414px;
+}
+
+.fl-sizes__badge {
+  display: block;
+  width: 202px;
+}
+
+.fl-sizes__cta {
+  position: absolute;
+  top: 70vw;                      /* below the left pack in the artwork (scales with it) */
+  left: max(20px, 11.6vw);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 567px;
+}
+
+.fl-sizes__title {
+  line-height: 0;
+}
+
+.fl-sizes__title img {
+  display: block;
+  width: 437px;
+}
+
+.fl-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 5px;
+  background: #d72123;
+  color: #fff;
+  font-family: 'Roboto', 'sofia-pro', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.fl-btn:hover,
+.fl-btn:focus {
+  background: #b3171a;
+  color: #fff;
+}
+
+/* ---------- Responsive ---------- */
+@media only screen and ( max-width: 1024px ) {
+  .fl-hero__top {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+
+  .fl-hero__cutout {
+    margin-left: -40px;
+    width: 520px;
+  }
+
+}
+
+@media only screen and ( max-width: 767px ) {
+  .fl-hero__top {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .fl-hero__logo img {
+    width: 150px;
+  }
+
+  .fl-hero__mark {
+    padding-top: 0;
+  }
+
+  .fl-hero__body {
+    padding-top: 30px;
+  }
+
+  .fl-hero__cutout {
+    margin-left: -20px;
+    width: 100%;
+  }
+
+  .fl-text p {
+    font-size: 18px;
+  }
+
+  .fl-recipes {
+    padding: 40px 0;
+  }
+
+  .fl-recipes__grid {
+    grid-template-columns: minmax(0, 347px);
+  }
+
+  .fl-sizes {
+    min-height: 0;
+    padding-bottom: 50px;
+    background-size: 220% auto;
+  }
+
+  .fl-sizes__intro {
+    align-items: flex-start;
+  }
+
+  .fl-sizes__cta {
+    position: static;
+    margin-top: 360px;              /* room for the packaging artwork in the background */
+  }
+}

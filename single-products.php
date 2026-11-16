@@ -24,6 +24,14 @@ box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1);
 
   if ( have_posts() ) : while ( have_posts() ) : the_post();
 
+    // Branded "showcase" layout (Aria, Festiva, SNAP…) – any product with a Hero Background Image.
+    // Replaces the old Elementor Pro single templates. See templates/product-showcase.php.
+    global $fields;
+    if ( ! empty( $fields['hero_background_image'] ) ) {
+      get_template_part( 'templates/product-showcase' );
+      continue;
+    }
+
     cc_do_title_container();
 
     global $fields;
