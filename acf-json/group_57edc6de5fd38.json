@@ -6,6 +6,7 @@
             "key": "field_57edc6e1cbfeb",
             "label": "General Application",
             "name": "general_application",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "Enter a brief description.",
             "required": 0,
@@ -18,12 +19,14 @@
             "default_value": "",
             "tabs": "all",
             "toolbar": "full",
-            "media_upload": 1
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_57edc75f02c6f",
             "label": "Careers Application Form",
             "name": "careers_application_form",
+            "aria-label": "",
             "type": "text",
             "instructions": "Enter the shortcode from Contact Form 7 to display the form.",
             "required": 0,
@@ -43,6 +46,7 @@
             "key": "field_57edcb45804d0",
             "label": "Application Locations",
             "name": "locations",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -53,8 +57,8 @@
                 "id": ""
             },
             "collapsed": "",
-            "min": "",
-            "max": "",
+            "min": 0,
+            "max": 0,
             "layout": "table",
             "button_label": "Add Row",
             "sub_fields": [
@@ -62,6 +66,7 @@
                     "key": "field_57edcb62804d1",
                     "label": "Location Name",
                     "name": "name",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "(Example: Delta, BC)",
                     "required": 0,
@@ -75,12 +80,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57edcb45804d0"
                 },
                 {
                     "key": "field_580fdcd75e038",
                     "label": "Email To",
                     "name": "email",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "Enter the email addresses(es), maximum 2.<br\/> \r\n(Example: contact@windset.com, contact2@windset.com)",
                     "required": 0,
@@ -94,14 +101,17 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_57edcb45804d0"
                 }
-            ]
+            ],
+            "rows_per_page": 20
         },
         {
             "key": "field_5b354eb220c9d",
             "label": "Careers",
             "name": "careers",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -111,16 +121,19 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
-            "min": "",
-            "max": "",
             "layout": "row",
-            "button_label": "Add Row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Position",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_5b354ebd20c9e",
                     "label": "Title",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -134,12 +147,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_5b354eb220c9d"
                 },
                 {
                     "key": "field_5b354ec520c9f",
                     "label": "Job ID",
                     "name": "job_id",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -153,12 +168,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_5b354eb220c9d"
                 },
                 {
                     "key": "field_5b354ecb20ca0",
                     "label": "Location",
                     "name": "location",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -172,12 +189,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_5b354eb220c9d"
                 },
                 {
                     "key": "field_5b354ed120ca1",
                     "label": "Description",
                     "name": "description",
+                    "aria-label": "",
                     "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
@@ -190,7 +209,9 @@
                     "default_value": "",
                     "tabs": "all",
                     "toolbar": "full",
-                    "media_upload": 1
+                    "media_upload": 1,
+                    "delay": 0,
+                    "parent_repeater": "field_5b354eb220c9d"
                 }
             ]
         }
@@ -217,8 +238,11 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "local": "php",
-    "modified": 1540443865
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1793829628
 }
